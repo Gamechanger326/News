@@ -1,0 +1,1082 @@
+#include<iostream.h>
+#include<conio.h>
+#include<process.h>
+#include<string.h>
+#include<graphics.h>
+#include<stdlib.h>
+#include<stdio.h>
+#include<dos.h>
+#include<fstream.h>
+#include<ctype.h>
+
+ int latest();
+ int password();
+ int latest(int ch2);
+
+ char c,ch,ch1,ch2,ch3,ch4,ch5,ch6,ch7,ch8,ch9,ch10,ch11,ch12;
+ char str[20],str1[20],pas[20],pas0[20],pas1[20];
+ int z,v,g,s,r;
+ int left, top, right, bottom;
+ int left1, top1, right1, bottom1;
+
+ char flag,m;
+
+ fstream info,news;
+
+ class main
+ {
+  public: char user_news[600];
+	  char str5[100];
+
+	  void display_news()
+	  {
+	   cout<<"\n\n\n\t\t";
+	   cout.write(str5,100);
+	   cout<<"\n\n\n";
+	   cout.write(user_news,600);
+	  }
+ };
+
+ class news:public main
+ {
+  public: void ent_news()
+	  {
+	    cout<<"\n Enter  news  (headline) -   ";
+	    gets(str5);
+
+	    cout<<"\n NEWS :  \n\n" ;
+	    gets(user_news);
+	  }
+
+  }n;
+
+ class sports_news:public main
+ {
+  public: void ent_news()
+	  {
+	   cout<<"\n Enter Sports news (headline) -   ";
+	   gets(str5);
+
+	   cout<<"\n NEWS :  \n\n" ;
+	   gets(user_news);
+	  }
+
+ }n2;
+
+ class it_news:public main
+ {
+  public: void ent_news()
+	  {
+	    cout<<"\n Enter IT news (headline) -   ";
+	    gets(str5);
+
+	    cout<<"\n NEWS :  \n\n" ;
+	    gets(user_news);
+	  }
+
+ }n1;
+
+ class dispnews
+ {
+  public: char b;
+	  dispnews()
+	  {  b=0; }
+	  void display();
+ }j;
+
+ void dispnews::display()
+ {
+  {
+   while(info)
+   {
+    info.get(b);
+    cout<<b;
+    delay(1);
+   }
+   getch();
+  }
+ }
+
+ typedef int space;
+
+ void main()
+ {
+  clrscr();
+  randomize();
+
+ void ellipse();
+ void fpage();
+ void time();
+
+ ellipse();
+
+ space gdriver = DETECT, gmode;
+ initgraph(&gdriver, &gmode, "");
+
+ int flag3;
+ setbkcolor(BLUE);
+
+ do
+ {
+  flag3=0;
+
+  cout<<"\n\n\n\n\n  Enter the user name -  ";
+  cin>>str;
+
+  s=strlen(str);
+
+  char t;
+
+  for(int r=0;r<s;r++)
+  {
+    t=str[r];
+
+    if(isalpha(t)==0)
+    {
+     cout<<"\n\n   Please enter only alphabhets in username!!!!";
+     flag3=1;
+     int end;
+     goto end;
+    }
+    else
+     { str[r]=t; }
+  }
+
+  for(g=0;g<20;g++)
+  { pas[g]='\0';
+   pas0[g]='\0';
+  }
+
+  cout<<"\n\n  Enter the password -  ";
+  z=0;
+  pas[0]=getch();
+  while(pas[z]!=13)
+  {
+   z++;
+   cout<<"*";
+   pas[z]=getch();
+  }
+
+  r=strlen(pas);
+
+  cout<<"\n\n  Confirm password -  ";
+  v=0;
+  pas0[0]=getch();
+  while(pas0[v]!=13)
+  {
+   v++;
+   cout<<"*";
+   pas0[v]=getch();
+  }
+
+ if(strcmp(pas,pas0)!=0)
+  {
+   cout<<"\n\n  Passwords do not coincide!!!!";
+   flag3=1;
+  }
+
+ if(str[0]=='\0'||pas[0]=='\0')
+ {
+  cout<<"\n\n\n PLEASE ENTER A CHARACTER!!!!!!";
+  flag3=1;
+ }
+ else if(str[0]!='\0'||pas[0]!='\0')
+ {
+  continue;
+ }
+  end:
+ }while(flag3==1);
+
+ do
+ {
+  clrscr();
+  fpage();
+  setbkcolor(BLUE);
+  cout<<"\n\n\n\n\n\n\n\n  1) IT";
+  cout<<"\n\n\n  2) SPORTS";
+  cout<<"\n\n\n  3) Enter the news";
+  cout<<"\n\n\n  4) News update";
+  cout<<"\n\n\n  5) Exit";
+  cout<<"\n\n\n\n  Enter your choice : ";
+  cin>>c;
+
+  if(c=='1')
+  {
+   do
+   {
+    clrscr();
+    cleardevice();
+    setbkcolor(GREEN);
+
+    moveto(75,30);
+    settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+    outtext("Information Technology");
+    cout<<"\n\n\n\n\n\n\n\n   1) IT and technology";
+   cout<<"\n\n   2) History and technology";
+   cout<<"\n\n   3) Latest technology";
+   cout<<"\n\n   4) Women and IT";
+   cout<<"\n\n   5) Enter IT news";
+   cout<<"\n\n   6) IT News update";
+
+   cout<<"\n\n\n\n   Enter your choice :  ";
+   cin>>ch;
+
+   switch(ch)
+   {
+    case '1':    clrscr();
+		 cleardevice();
+		 moveto(125,40);
+		 settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+		 outtext("IT AND TECHNOLOGY");
+		 info.open("data_it1.dat",ios::in);
+		 j.display();
+		 info.close();
+
+		 clrscr();
+		 cleardevice();
+		 setbkcolor(GREEN);
+		 moveto(125,40);
+		 settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+		 outtext("IT AND TECHNOLOGY");
+
+		 info.open("data_it2.dat",ios::in);
+		 j.display();
+		 info.close();
+
+		 break;
+
+    case '2':    clrscr();
+		 cleardevice();
+		 moveto(50,28);
+		 settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+		 outtext("HISTORY AND TECHNOLOGY");
+		 info.open("data_HAT.dat",ios::in);
+		 j.display();
+		 info.close();
+
+		 clrscr();
+		 cleardevice();
+
+		 break;
+
+
+    case '3':    clrscr();
+		 cleardevice();
+		 setbkcolor(CYAN);
+
+		 do
+		 {
+		  latest();
+		 } while(ch3=='y'||ch3=='Y');
+
+		 break;
+
+    case '4':    clrscr();
+		 cleardevice();
+		 moveto(170,25);
+		 settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+		 outtext("WOMEN AND IT");
+
+		 info.open("data_WAI.dat",ios::in);
+		 j.display();
+		 info.close();
+
+		 clrscr();
+		 cleardevice();
+
+		 break;
+
+    case '5':    password();
+		 if(flag==1)
+		 {
+		  cout<<"\n\n\n WRONG USERNAME OR PASSWORD";
+		 }
+		 else
+		 {
+		  clrscr();
+		  cleardevice();
+
+		  news.open("New_ITnews.dat",ios::app);
+		  news.seekg(EOF);
+
+		  moveto(150,40);
+		  settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+		  outtext("ENTER THE NEWS");
+		  cout<<"\n\n\n\n\n\n\n\n  ";
+
+		  n1.ent_news();
+		  news.write((char*)&n1,sizeof(n1));
+
+		  news.close();
+
+		 }
+		  break;
+
+    case '6':   clrscr();
+		cleardevice();
+		setbkcolor(GREEN);
+
+		ifstream fin;
+		fin.open("New_ITnews.dat",ios::in);
+
+		if(fin)
+		 {
+		  fin.seekg(0);
+
+		  while(!fin.eof())
+		  {
+		   for(int o=0;;o++)
+		   {
+		    clrscr();
+		    cleardevice();
+
+		    moveto(165,40);
+		    settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+		    outtext("NEWS UPDATE");
+
+		    cout<<"\n\n\n\n\n\n\n\n";
+
+		    fin.read((char*)&n1,sizeof(n1));
+
+		    if(fin.eof())  break;
+
+		    n1.display_news();
+
+		    cout<<"\n  Press any button to continue!!!! ";
+		    getch();
+		   }
+		  }
+		  fin.close();
+		}
+		 else
+		{
+		 moveto(165,200);
+		 settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+		 outtext("NO NEWS UPDATE");
+		}
+		 break;
+
+     default:
+	      clrscr();
+	      cleardevice();
+	      setbkcolor(RED);
+	      moveto(165,200);
+	      settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+	      outtext("WRONG CHOICE!!!");
+
+	      break;
+  }
+    cout<<"\n\n Want to search for more IT news!!!! (y/n) : ";
+    cin>>ch1;
+ }  while(ch1=='y'||ch1=='Y');
+}
+
+ else if(c=='2')
+ {
+  do
+  {
+   clrscr();
+   cleardevice();
+   setbkcolor(BROWN);
+
+   moveto(225,30);
+   settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+   outtext("Sports News");
+
+   cout<<"\n\n\n\n\n\n\n\n  1) Football";
+   cout<<"\n\n  2) Criket";
+   cout<<"\n\n  3) Tennis";
+   cout<<"\n\n  4) Controversies that rocked the sports world";
+   cout<<"\n\n  5) Enter Sports news";
+   cout<<"\n\n  6) Sports News update";
+
+   cout<<"\n\n\n  Enter your choice : ";
+   cin>>ch4;
+
+   if (ch4=='1')
+   {
+    do
+    {
+      clrscr();
+      cleardevice();
+      setbkcolor(BROWN);
+
+      moveto(245,40);
+      settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+      outtext("FOOTBALL");
+
+      cout<<"\n\n\n\n\n\n\n\n\n   1) Cristiano Ronaldo wins FIFA best player award ";
+      cout<<"\n\n   2) Real Madrid scripts history";
+      cout<<"\n\n   3) Football World Cup 2026 to have 48 teams";
+      cout<<"\n\n\n Enter your choice : ";
+      cin>>ch5;
+
+
+     if(ch5=='1')
+     {
+      clrscr();
+      cleardevice();
+      setbkcolor(BROWN);
+
+      moveto(70,45);
+      settextstyle(TRIPLEX_FONT, HORIZ_DIR, 2);
+      outtext("Cristiano Ronaldo wins FIFA best player award ");
+
+      info.open("data_CR7.dat",ios::in);
+      j.display();
+      info.close();
+     }
+
+     else if(ch5=='2')
+     {
+      clrscr();
+      cleardevice();
+      setbkcolor(BROWN);
+
+      moveto(160,45);
+      settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+      outtext("Real Madrid scripts history");
+
+      info.open("data_RM.dat",ios::in);
+      j.display();
+      info.close();
+     }
+
+     else if(ch5=='3')
+     {
+      clrscr();
+      cleardevice();
+      setbkcolor(BROWN);
+
+      moveto(95,45);
+      settextstyle(TRIPLEX_FONT, HORIZ_DIR, 2);
+      outtext("Football World Cup 2026 to have 48 teams");
+
+      info.open("data_FWC.dat",ios::in);
+      j.display();
+      info.close();
+     }
+
+     else
+     {
+      clrscr();
+      cleardevice();
+      setbkcolor(RED);
+
+      moveto(165,200);
+      settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+      outtext("WRONG CHOICE!!!");
+     }
+    cout<<"\n\n\n Want to search for more Football news!!!! (y/n) : ";
+    cin>>ch6;
+   }  while(ch6=='y'||ch6=='Y');
+  }
+  else if(ch4=='2')
+  {
+   do
+   {
+    clrscr();
+    cleardevice();
+    setbkcolor(BROWN);
+
+    moveto(255,40);
+    settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+    outtext("CRICKET");
+
+    cout<<"\n\n\n\n\n\n\n\n\n   1) A new day in Gujarat's cricketing history";
+    cout<<"\n\n   2) Split captaincy doesn't really work: Dhoni";
+    cout<<"\n\n\n Enter your choice : ";
+    cin>>ch7;
+
+    switch(ch7)
+    {
+     case '1' :   clrscr();
+		  cleardevice();
+		  setbkcolor(BROWN);
+
+		  moveto(80,45);
+		  settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+		  outtext("A new day in Gujarat's cricketing history");
+		  info.open("data_GUJ.dat",ios::in);
+		  j.display();
+		  info.close();
+		  break;
+
+     case'2' :    clrscr();
+		  cleardevice();
+		  setbkcolor(BROWN);
+
+		  moveto(80,45);
+		  settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+		  outtext("Split captaincy doesn't really work: Dhoni");
+		  info.open("data_MSD.dat",ios::in);
+		  j.display();
+		  info.close();
+		  break;
+
+     default:     clrscr();
+		  cleardevice();
+		  setbkcolor(RED);
+
+		  moveto(165,200);
+		  settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+		  outtext("WRONG CHOICE!!!");
+		  break;
+    }
+
+    cout<<"\n\n\n Want to search for more Criket news!!!! (y/n) : ";
+    cin>>ch8;
+   }  while(ch8=='y'||ch8=='Y');
+  }
+
+  else if(ch4=='3')
+  {
+   do
+   {
+    clrscr();
+    cleardevice();
+    setbkcolor(BROWN);
+
+    moveto(265,40);
+    settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+    outtext("TENNIS");
+    cout<<"\n\n\n\n\n\n\n\n\n   1)  Evans loses singles final & Jamie beaten in doubles";
+    cout<<"\n\n   2)  Andy Murray spurred on by world number one status";
+    cout<<"\n\n Enter your choice : ";
+    cin>>ch9;
+
+    switch(ch9)
+    {
+     case '1' :      clrscr();
+		     cleardevice();
+		     setbkcolor(BROWN);
+
+		     moveto(55,45);
+		     settextstyle(TRIPLEX_FONT, HORIZ_DIR, 2);
+		     outtext("Evans loses singles final & Jamie beaten in doubles");
+
+		     info.open("data_EVA.dat",ios::in);
+		     j.display();
+		     info.close();
+		     break;
+
+     case '2' :     clrscr();
+		    cleardevice();
+		    setbkcolor(BROWN);
+
+		    moveto(40,50);
+		    settextstyle(TRIPLEX_FONT, HORIZ_DIR, 2);
+		    outtext("Andy Murray spurred on by world number one status");
+
+		    info.open("data_MUR.dat",ios::in);
+		    j.display();
+		    info.close();
+
+		    break;
+
+      default:      clrscr();
+		    cleardevice();
+		    setbkcolor(RED);
+
+		    moveto(165,200);
+		    settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+		    outtext("WRONG CHOICE!!!");
+
+		    break;
+
+    }
+    cout<<"\n\n\n Want to search for more Tennis news!!!! (y/n) : ";
+    cin>>ch10;
+
+   }  while(ch10=='y'||ch10=='Y');
+  }
+
+  else if(ch4=='4')
+  {
+   clrscr();
+   cleardevice();
+   setbkcolor(BROWN);
+
+   moveto(70,50);
+   settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+   outtext("Controversies that rocked the sports world");
+   info.open("con1.dat",ios::in);
+
+   j.display();
+   info.close();
+
+   clrscr();
+   cleardevice();
+
+   moveto(70,50);
+   settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+   outtext("Controversies that rocked the sports world");
+
+   info.open("con2.dat",ios::in);
+   j.display();
+   info.close();
+
+   clrscr();
+   cleardevice();
+
+   moveto(70,50);
+   settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+   outtext("Controversies that rocked the sports world");
+
+   info.open("con3.dat",ios::in);
+   j.display();
+   info.close();
+  }
+
+   else if(ch4=='5')
+   {
+    password();
+    if(flag==1)
+    { cout<<"\n\n\n WRONG USERNAME OR PASSWORD"; }
+
+    else
+    {
+     clrscr();
+     cleardevice();
+
+     news.open("New_SPORTSnews.dat",ios::app);
+
+     news.seekg(EOF);
+
+     moveto(150,40);
+     settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+     outtext("ENTER THE NEWS");
+     cout<<"\n\n\n\n\n\n\n\n  ";
+     n2.ent_news();
+     news.write((char*)&n2,sizeof(n2));
+
+     news.close();
+    }
+  }
+
+  else if(ch4=='6')
+  {
+    clrscr();
+    cleardevice();
+    setbkcolor(BROWN);
+
+    ifstream fin;
+    fin.open("New_SPORTSnews.dat",ios::in);
+
+    if(fin)
+    {
+     fin.seekg(0);
+
+     while(!fin.eof())
+     {
+      for(int o=0;;o++)
+      {
+       clrscr();
+       cleardevice();
+
+       moveto(165,40);
+       settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+       outtext("NEWS UPDATE");
+       cout<<"\n\n\n\n\n\n\n\n";
+
+       fin.read((char*)&n2,sizeof(n2));
+
+       if(fin.eof())  break;
+
+       n2.display_news();
+
+       cout<<"\n  Press any button to continue!!!! ";
+       getch();
+      }
+     }
+     fin.close();
+    }
+   else
+   {
+     moveto(165,200);
+     settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+     outtext("NO NEWS UPDATE");
+    }
+  }
+
+   else
+   {
+    clrscr();
+    cleardevice();
+    setbkcolor(RED);
+
+    moveto(165,200);
+    settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+    outtext("WRONG CHOICE!!!");
+
+   }
+   cout<<"\n\n\n Want to search for more Sports news!!!! (y/n) : ";
+   cin>>ch11;
+
+  } while(ch11=='y'||ch11=='Y');
+
+ }
+
+  else if(c=='3')
+  {
+   password();
+   if(flag==1)
+   {
+    cout<<"\n\n\n WRONG USERNAME OR PASSWORD";
+   }
+
+  else
+  {
+   clrscr();
+   cleardevice();
+
+   news.open("New_news.dat",ios::app);
+
+   news.seekg(EOF);
+
+   moveto(150,40);
+   settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+   outtext("ENTER THE NEWS");
+   cout<<"\n\n\n\n\n\n\n\n  ";
+
+   n.ent_news();
+   news.write((char*)&n,sizeof(n));
+   news.close();
+  }
+ }
+ else if(c=='4')
+ {
+  clrscr();
+  cleardevice();
+  setbkcolor(BLUE);
+
+  ifstream fin;
+  fin.open("New_news.dat",ios::in);
+
+  if(fin)
+  {
+   fin.seekg(0);
+
+   while(!fin.eof())
+   {
+    for(int o=0;;o++)
+    {
+     clrscr();
+     cleardevice();
+
+     moveto(165,40);
+     settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+     outtext("NEWS UPDATE");
+
+     cout<<"\n\n\n\n\n\n\n\n";
+
+     fin.read((char*)&n,sizeof(n));
+
+     if(fin.eof())  break;
+
+     n.display_news();
+
+     cout<<"\n  Press any button to continue!!!! ";
+     getch();
+    }
+   }
+   fin.close();
+  }
+
+  else
+  {
+   moveto(165,200);
+   settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+   outtext("NO NEWS UPDATE");
+  }
+ }
+
+ else if(c=='5')
+ {  exit(0); }
+
+ else
+ {
+  clrscr();
+  cleardevice();
+  setbkcolor(RED);
+
+  moveto(165,200);
+  settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+  outtext("WRONG CHOICE!!!");
+ }
+
+ cout<<"\n\n Want to search for more news!!!! (y/n) : ";
+ cin>>ch12;
+
+ }while(ch12=='y'||ch12=='Y');
+
+ getch();
+
+}
+
+
+ void ellipse()
+ {
+     clrscr();
+    space gdriver = DETECT, gmode;
+    initgraph(&gdriver, &gmode, "");
+
+    setbkcolor(CYAN);
+    left = getmaxx() / 2 - 310;
+    top = getmaxy() / 2 - 210;
+    right = getmaxx() / 2 + 310;
+    bottom = getmaxy() / 2 + 210;
+    left1 = getmaxx() / 2 - 312;
+    top1 = getmaxy() / 2 - 212;
+    right1 = getmaxx() / 2 + 312;
+    bottom1 = getmaxy() / 2 + 212;
+    rectangle(left,top,right,bottom);
+    rectangle(left1,top1,right1,bottom1);
+
+    settextstyle(0,0,0);
+    setcolor(14);
+    outtextxy(390,310,"Developed By :: AKHIL.K.JAMES");
+    outtextxy(510,325,"& RAMANATH.B.L");
+    setcolor(14);
+    outtextxy(390,350,"CLASS :: 12");
+    setcolor(14);
+    outtextxy(390,380,"2017-2018");
+    settextstyle(TRIPLEX_FONT, HORIZ_DIR, 4);
+    setcolor(12);
+    outtextxy(100,140,"VIDYANIKETAN PUBLIC SCHOOL");
+    getch();
+
+   clrscr();
+   cleardevice();
+   space midx, midy;
+   space stangle = 0, endangle = 360;
+   space xradius = 250, yradius = 200;
+
+   midx = getmaxx() / 2;
+   midy = getmaxy() / 2;
+   setcolor(getmaxcolor());
+
+   ellipse(midx, midy, stangle, endangle,
+   xradius, yradius);
+
+   moveto(240,200);
+   highvideo();
+   setcolor(6);
+
+   settextstyle(TRIPLEX_FONT, HORIZ_DIR, 7);
+
+   outtext("NEWS");
+
+   settextstyle(2, HORIZ_DIR, 4);
+
+   moveto(265,280);
+   for(space p=0;p<20;p++)
+   {
+   setbkcolor(random(5));
+   delay(150);
+   }
+
+   outtext("(PRESS ANY BUTTON)");
+   getch();
+   closegraph();
+  }
+
+
+ void fpage()
+ {
+  clrscr();
+  cleardevice();
+  setbkcolor(BLACK);
+
+  moveto(220,20);
+  settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+  outtext("THE NEWS");
+  getch();
+ }
+
+ int latest()
+ {
+  clrscr();
+  cleardevice();
+  setbkcolor(CYAN);
+
+  moveto(125,30);
+  settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+  outtext("LATEST TECHNOLOGY");
+
+  cout<<"\n\n\n\n\n\n\n    Inventions - "
+      <<"\n\n   1) Cloud Computing"
+      <<"\n\n   2) Car Gps Tracking"
+      <<"\n\n   3) Air Into Water"
+      <<"\n\n   4) Vein Identification"
+      <<"\n\n   5) World's Fastest Motor"
+      <<"\n\n   6) A House that Walks";
+
+  cout<<"\n\n\n Enter your choice : ";
+  cin>>ch2;
+
+  latest(ch2);
+
+  return 0;
+ }
+
+
+int latest(int ch2)
+{
+  switch(ch2)
+  {
+   case '1':   clrscr();
+	       cleardevice();
+	       setbkcolor(CYAN);
+
+	       moveto(220,35);
+	       settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+	       outtext("Cloud Computing");
+
+	       cout<<"\n\n\n\n\n\n  Analysts predict that the latest technology inventions in cloud computing willsignificantly influence how we use our computers and mobile devices."
+		   <<"The         advantages of cloud computing is that it eliminates the difficulty and expense  of maintaining, upgrading and scaling your own computer hardware and software   while increasing efficiency, speed and resources."
+		   <<"Your computer's processing     speed, memory capacity, software applications and maintenance requirements are  minimized."
+		   <<"You could store and access any size  or type of file, play games, use or develop applications, render videos, word process, make scientific           calculations, or anything you want, by simply using a smart phone."
+		   <<"As a          comparison, let's say you had to generate your own electricity. You would need  to maintain, upgrade and scale these resources as required to meet your demands.This would be expensive and time consuming."
+		   <<"Cloud computing could be compared to how a utility provides electricity. It has the architecture, infrastructure,    applications, expertise and resources to generate this service for you. You justconnect to their grid."
+		   <<"Microsoft, IBM and Google are some of the companies that  are investing heavily into the research and development of cloud technology. ";
+	       break;
+
+   case '2':   clrscr();
+	       cleardevice();
+	       setbkcolor(CYAN);
+
+	       moveto(215,35);
+	       settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+	       outtext("Car GPS Tracking");
+
+	       cout<<"\n\n\n\n\n\n  Car Gps Tracking is fairly common in new vehicles, providing drivers with     tracking and navigation."
+		   <<"However, latest technology inventions have made car gps tracking systems more sophisticated, allowing for a wide range of additional    uses."
+		   <<"Smartbox technology is one example of how car gps tracking systems are     being used to lower car insurance."
+		   <<"A comprehensive recording of a driver's habitsallows insurance companies to provide pay-as-you-drive car insurance."
+		   <<"City       officials in New York City are considering how car gps tracking could be used asDrive Smart technology."
+		   <<"Most large cities have a limited capability to change theinfrastructure of their roadways."
+		   <<"A car gps tracking system that integrates with traffic information would give drivers the ability to select routes in real timethat were more fuel efficient, less congested, faster or shorter."
+		   <<"A driver's     recorded routing selection could then be used to penalize or reward drivers by  lowering or increasing their related licensing fees or by calculating mileage   based road-use fees."
+		   <<"Eventually, such a system would replace gasoline tax since  these revenues will decline as more vehicles become less dependent on fossil    fuels.";
+
+	       break;
+
+   case '3' :  clrscr();
+	       cleardevice();
+	       setbkcolor(CYAN);
+
+	       moveto(235,35);
+	       settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+	       outtext("Air Into Water");
+
+	       cout<<"\n\n\n\n\n\n  Johathan Ritchey has invented the Watermill, which is an atmospheric water    generator. It converts air into fresh water."
+		   <<"This latest technology invention    produces fresh water at a cost of about 3 cents a liter (1 quart). Originally   designed for areas that do not have clean drinking water, the Watermill is for  households that prefer an eco-friendly, cost effective alternative to bottled   water. "
+		   <<"Atmospheric water generators convert air into water when the temperature of the air becomes saturated with enough water vapor that it begins to condense (dew point)."
+		   <<"'What is unique about the Watermill is that it has intelligence',   says Ritche. This makes the appliance more efficient. It samples the air every  3 minutes to determine the most efficient time to convert the air into water."
+		   <<"It will also tell you when to change the carbon filter and will shut itself off if it cannot make pure clean water.";
+
+	       break;
+
+   case '4' :  clrscr();
+	       cleardevice();
+	       setbkcolor(CYAN);
+
+	       moveto(215,35);
+	       settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+	       outtext("Vein Identification");
+
+	       cout<<"\n\n\n\n\n\n  Another technology innovation is the biometric identification and security    device known as PalmSecure."
+		   <<"It works by identifying the vein pattern in the palmsof our hands."
+		   <<"Similar to our fingerprints, vein patterns are unique to each      individual. The purported advantages of this technology is that it is less      expensive, easier to manage, and is more reliable than traditional methods of   identification.";
+
+	       break;
+
+   case '5' :  clrscr();
+	       cleardevice();
+	       setbkcolor(CYAN);
+
+	       moveto(205,35);
+	       settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+	       outtext("World's Fastest Motor");
+
+	       cout<<"\n\n\n\n\n\n  A new motor developed by researchers at ETH Zurich's Department of Power      Electronics and marketed by the Swiss company, Celeroton, can spin in excess of 1 million revolutions per minute."
+		   <<"As a comparison, collapsed stars spin at 60,000rpms, a blender at about 30,000 and high performance engines at around 10,000   rpms."
+		   <<"The matchbook-sized motor has a titatnium shell, ultra-thin wiring and a   trade secret iron formulated cylinder. The need for smaller electronic devices  requires smaller holes, which means smaller, faster, more efficient drills.";
+
+	       break;
+
+   case '6' :  clrscr();
+	       cleardevice();
+	       setbkcolor(CYAN);
+
+	       moveto(205,35);
+	       settextstyle(TRIPLEX_FONT, HORIZ_DIR, 3);
+	       outtext("A House that Walks");
+
+	       cout<<"\n\n\n\n\n\n  A new prototype house walked around the campus of the Wysing Arts Centre in   Cambridgeshire, England."
+		   <<"The eco-friendly house is powered by solar cells and    minature windmills, and comes with a kitchen, a composting toilet, a system for collecting rain water, one bed, a wood stove for CO2 neutral heating, a rear    opening that forms a stairway entrance, and six legs."
+		   <<"A collaborative effort     between MIT and the Danish design collective N55, the house walks about five    kilometers an hour similar to the walking speed of a human."
+		   <<"The legs reguire a   software algorithm to calculate the movement and position of the legs to providestability over varying terrain."
+		   <<"The house can turn, move forward or backwards, orchange height as required and can be programmed with GPS waypoints for travelingto destinations.";
+
+	       break;
+
+    default :
+	       clrscr();
+	       cleardevice();
+	       setbkcolor(RED);
+
+	       moveto(165,200);
+	       settextstyle(TRIPLEX_FONT, HORIZ_DIR, 5);
+	       outtext("WRONG CHOICE!!!");
+	       break;
+ }
+  cout<<"\n\nWant to find out more new inventions ? (y/n) :  ";
+  cin>>ch3;
+
+  return(ch3);
+}
+
+int password()
+{
+
+	     clrscr();
+	     cleardevice();
+	     setbkcolor(BLUE);
+
+	     for(g=0;g<20;g++)
+	     {
+	       str1[g]='\0';
+	       pas1[g]='\0';
+	     }
+
+	     flag=0;
+	     cout<<"\n\n\n\n Enter the user name to proceed -     ";
+	     gets(str1);
+	     cout<<"\n\n Enter the password to proceed -    ";
+	     z=0;
+
+	     pas1[0]=getch();
+	     while(pas1[z]!=13)
+	     {
+		 z++;
+		 cout<<"*";
+		 pas1[z]=getch();
+	     }
+
+for(space i=0;pas[i]!='\0';i++)
+for(space k=0;str[k]!='\0';k++)
+{
+ for(space j=0;pas1[j]!='\0';j++)
+ for(space w=0;str1[w]!='\0';w++)
+ {
+  if(pas1[i]!=pas[i]||str1[k]!=str[k])
+  {
+   flag=1;
+  }
+ }
+}
+
+return flag;
+}
